@@ -21,14 +21,14 @@ def draw_rollinghills():
     arcade.draw_ellipse_filled(600, -10, 300, 100, arcade.color.ISLAMIC_GREEN, 20)
     arcade.draw_ellipse_filled(100, -200, 500, 400, arcade.color.KELLY_GREEN, 0)
 
-def draw_trees():
+def draw_trees(x, y, z):
     """ Draw trees """
-
+    #arcade.draw_rectangle_filled(160, 80, 40, 80, arcade.color.BROWN_NOSE)
     #base
-    arcade.draw_rectangle_filled(160, 100, 50, 100, arcade.color.BROWN_NOSE)
+    arcade.draw_rectangle_filled(x, y, x-z*127, y-z*20, arcade.color.BROWN_NOSE)
 
     #leaves
-    arcade.draw_triangle_filled(200, 100, 300, 100, 200, 50, arcade.color.UP_FOREST_GREEN)
+    arcade.draw_triangle_filled(x, y+z*220, x-z*60, y+z*20, x+z*60, y+z*20, arcade.color.UP_FOREST_GREEN)
 
 def main():
     arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, "Drawing with Functions")
@@ -43,7 +43,7 @@ def main():
     draw_cloud(150, 500, 80)
 
     draw_rollinghills()
-    draw_trees()
+    draw_trees(160, 80, 5)
 
     # Finish and run
     arcade.finish_render()
