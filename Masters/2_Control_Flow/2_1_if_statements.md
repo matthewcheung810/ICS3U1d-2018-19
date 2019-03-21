@@ -6,7 +6,7 @@ When squirrels get together for a party, they like to have cigars. A squirrel pa
 
 
 ```python
-def cigar_party(cigars, is_weekend):
+
 
 ```
 
