@@ -14,7 +14,6 @@ def cigar_party(cigars, is_weekend):
     else:
         print("False")
 
-
 ```
 
 ### Examples

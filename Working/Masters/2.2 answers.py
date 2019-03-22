@@ -6,6 +6,6 @@ def date_fashion(you, date):
     else:
         print("1")
 
-date_fashion(5, 10) #→ 2
-date_fashion(5, 2) #→ 0
-date_fashion(5, 5) #→ 1
+date_fashion(5, 10)
+date_fashion(5, 2)
+date_fashion(5, 5)
