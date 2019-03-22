@@ -6,6 +6,13 @@ When squirrels get together for a party, they like to have cigars. A squirrel pa
 
 
 ```python
+def cigar_party(cigars, is_weekend):
+    if ((cigars >= 40) and (cigars <= 60)):
+        print("True")
+    elif (is_weekend == True) and (cigars >= 40):
+        print("True")
+    else:
+        print("False")
 
 
 ```
