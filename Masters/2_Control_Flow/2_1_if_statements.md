@@ -12,7 +12,7 @@ def cigar_party(cigars, is_weekend):
     elif (is_weekend == True) and (cigars >= 40):
         print("True")
     else:
-        print("False")
+        print("False") 
 
 ```
 

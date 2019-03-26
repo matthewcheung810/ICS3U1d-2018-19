@@ -4,6 +4,14 @@ The squirrels in Palo Alto spend most of the day playing. In particular, they pl
 
 ```python
 def squirrel_play(temp, is_summer):
+    if is_summer == True and (temp > 60 and temp < 100):
+        return True
+
+    elif temp > 60 and temp < 90:
+        return True
+
+    else:
+        return("False")
 ```
 
 
