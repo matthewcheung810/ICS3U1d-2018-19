@@ -22,8 +22,7 @@ arcade.draw_texture_rectangle(texture.width//2, texture.height//2, texture.width
 
 # render the text
 arcade.draw_text(line1, width//2 + 100, height - height//3, arcade.color.BLACK, 12)
-arcade.draw_text(line2, width//2 + 100, height//2 - height//4,
-                 arcade.color.BLACK, 12)
+arcade.draw_text(line2, width//2 + 100, height//2 - height//4, arcade.color.BLACK, 12)
 
 arcade.finish_render()
 
