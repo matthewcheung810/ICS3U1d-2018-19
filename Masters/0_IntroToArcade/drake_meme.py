@@ -1,6 +1,6 @@
 
 import arcade
-import
+import os
 
 # set the text for the meme
 line1 = "1goodVariableName"
