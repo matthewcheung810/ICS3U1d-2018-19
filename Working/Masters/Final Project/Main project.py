@@ -1,8 +1,8 @@
 import arcade
 
 
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 800
+HEIGHT = 600
 
 # start player position in middle of window
 player_x = WIDTH/2
