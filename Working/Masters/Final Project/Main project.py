@@ -14,7 +14,6 @@ down_pressed = False
 left_pressed = False
 right_pressed = False
 
-
 def on_update(delta_time):
     global up_pressed, player_y
     global down_pressed, player_y
@@ -29,12 +28,42 @@ def on_update(delta_time):
     if left_pressed:
         player_x -= 5
 
+    # stops player from leaving the screen
+    if player_y >= 580:
+        player_y = player_y - 5
+    if player_y <= 20:
+        player_y = player_y + 5
+    if player_x <= 20:
+        player_x = player_x + 5
+    if player_x >= 780:
+        player_x = player_x - 5
+
+    # creates boundaries for platforms
+    if 280 <= player_x <= 520 and 175 <= player_y <= 225:
+        if player_y == 175:
+            player_y = player_y - 5
+        elif player_y == 225:
+            player_y = player_y + 5
+
+        if player_x == 280:
+            player_x = player_x - 5
+        elif player_x == 520:
+            player_x = player_x + 5
+
+
+
+
+
+
 
 def on_draw():
     global player_x, player_y
     arcade.start_render()
     # Draw in here...
     arcade.draw_circle_filled(player_x, player_y, 25, arcade.color.BLUE)
+
+    # Draw platforms
+    arcade.draw_rectangle_filled(400, 200, 200, 10, arcade.color.BLACK)
 
 
 def on_key_press(key, modifiers):
