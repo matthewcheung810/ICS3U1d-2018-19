@@ -5,8 +5,8 @@ WIDTH = 800
 HEIGHT = 600
 
 # start player position in middle of window
-player_x = WIDTH/2
-player_y = HEIGHT/2
+player_x = 20
+player_y = 40
 
 # Variables to record if certain keys are being pressed.
 up_pressed = False
@@ -14,19 +14,30 @@ down_pressed = False
 left_pressed = False
 right_pressed = False
 
+# gravity variables
+velocity = 0
+gravity = 0.13
+on_plat = False
+
 def on_update(delta_time):
-    global up_pressed, player_y
-    global down_pressed, player_y
-    global right_pressed, player_x
-    global left_pressed, player_x
+    global up_pressed, down_pressed, right_pressed, left_pressed, player_x, player_y, velocity, gravity, on_plat
     if up_pressed:
         player_y += 5
+    else:
+        velocity = 0
     if down_pressed:
         player_y -= 5
     if right_pressed:
         player_x += 5
     if left_pressed:
         player_x -= 5
+
+
+    #gravity
+    if up_pressed is True and on_plat is False:
+        velocity += gravity
+        player_y -= velocity
+
 
     # stops player from leaving the screen
     if player_y >= 580:
@@ -40,15 +51,22 @@ def on_update(delta_time):
 
     # creates boundaries for platforms
     if 280 <= player_x <= 520 and 175 <= player_y <= 225:
-        if player_y == 175:
-            player_y = player_y - 5
-        elif player_y == 225:
-            player_y = player_y + 5
+        if player_y > 175:
+            player_y = 175
+            on_plat = True
+        elif player_y < 225:
+            player_y = 225
+            on_plat = True
 
-        if player_x == 280:
-            player_x = player_x - 5
-        elif player_x == 520:
-            player_x = player_x + 5
+        if player_x > 280:
+            player_x = 280
+            on_plat = True
+        elif player_x < 520:
+            player_x = 520
+            on_plat = True
+
+    else:
+        on_plat = False
 
 
 
@@ -67,10 +85,7 @@ def on_draw():
 
 
 def on_key_press(key, modifiers):
-    global up_pressed
-    global down_pressed
-    global right_pressed
-    global left_pressed
+    global up_pressed, down_pressed, right_pressed, left_pressed
     if key == arcade.key.W:
         up_pressed = True
     if key == arcade.key.S:
@@ -81,10 +96,7 @@ def on_key_press(key, modifiers):
         left_pressed = True
 
 def on_key_release(key, modifiers):
-    global up_pressed
-    global down_pressed
-    global right_pressed
-    global left_pressed
+    global up_pressed, down_pressed, right_pressed, left_pressed
     if key == arcade.key.W:
         up_pressed = False
     if key == arcade.key.S:
