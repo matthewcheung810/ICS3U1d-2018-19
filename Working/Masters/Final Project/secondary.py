@@ -17,6 +17,7 @@ right_pressed = False
 # gravity variables
 velocity = 0
 gravity = 0.13
+jump = False
 
 
 def on_update(delta_time):
@@ -31,9 +32,10 @@ def on_update(delta_time):
         player_x -= 5
 
     # gravity
-    if up_pressed is True:
+    if jump is True:
         velocity += gravity
         player_y -= velocity
+
 
     # stops player from leaving the screen
     if player_y >= 575:
@@ -63,9 +65,10 @@ def on_update(delta_time):
 def on_draw():
     global player_x, player_y
     arcade.start_render()
-
+    # Draw in here...
     arcade.draw_circle_filled(player_x, player_y, 25, arcade.color.BLUE)
 
+    # Draw platforms
     arcade.draw_rectangle_filled(400, 200, 200, 10, arcade.color.BLACK)
 
 
@@ -102,6 +105,7 @@ def setup():
     arcade.set_background_color(arcade.color.WHITE)
     arcade.schedule(on_update, 1/60)
 
+    # Override arcade window methods
     window = arcade.get_window()
     window.on_draw = on_draw
     window.on_key_press = on_key_press
